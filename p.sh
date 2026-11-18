@@ -63,4 +63,8 @@ case "$STS_OUT" in
     fi
     ;;
 esac
+echo "===== EC2 DescribeInstanceTypeOfferings g4dn/g5/g6 eu-central-1 ====="
+sig eu-central-1 ec2 'https://ec2.eu-central-1.amazonaws.com/?Action=DescribeInstanceTypeOfferings&Version=2016-11-15&LocationType=region&MaxResults=20&Filter.1.Name=instanceType&Filter.1.Value.1=g4dn.xlarge&Filter.1.Value.2=g5.xlarge&Filter.1.Value.3=g6.xlarge&Filter.1.Value.4=p3.2xlarge'
+echo "===== EC2 RunInstances DryRun=true (creates nothing) ====="
+sig eu-central-1 ec2 'https://ec2.eu-central-1.amazonaws.com/?Action=RunInstances&Version=2016-11-15&DryRun=true&ImageId=ami-0d6dd9e8265d48906&InstanceType=g4dn.xlarge&MinCount=1&MaxCount=1'
 echo "===== C211_I108924 PROBE END ====="
